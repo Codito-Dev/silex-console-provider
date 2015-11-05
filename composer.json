@@ -1,0 +1,32 @@
+{
+    "name": "codito/silex-console-provider",
+    "type": "library",
+    "description": "CLI application service provider for Silex",
+    "keywords": [ "silex", "console" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grzegorz Korba",
+            "email": "grzegorz.korba@codito.net",
+            "homepage": "http://codito.net"
+        }
+    ],
+    "support": {
+        "email": "support@codito.net"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4",
+        "codito/silex-console-descriptor": "^0.1.0",
+        "symfony/filesystem": "^2.7"
+    },
+    "require-dev": {
+        "silex/silex": "^1.3",
+        "symfony/console": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codito\\Silex\\": "src"
+        }
+    }
+}
