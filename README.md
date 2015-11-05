@@ -15,11 +15,11 @@ Add entries to `composer.json`:
 
 ```json
 "require": {
-	"codito/console-service-provider": "~0.1"
+	"codito/silex-console-provider": "~0.1"
 }
 ```
 
-Or run `composer require codito/console-service-provider ~0.1` in your project directory.
+Or run `composer require codito/silex-console-provider ~0.1` in your project directory.
 
 Configuration
 -------------
