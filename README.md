@@ -1,5 +1,5 @@
-ConsoleServiceProvider
-======================
+codito/silex-console-provider
+=============================
 
 Provides a console application for Silex, built on top of `Symfony\Component\Console\Application`.
 
