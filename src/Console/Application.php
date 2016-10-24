@@ -4,6 +4,8 @@ namespace Codito\Silex\Console;
 
 use Silex\Application as SilexApplication;
 use Symfony\Component\Console\Application as BaseApplication;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Application
@@ -30,7 +32,6 @@ class Application extends BaseApplication
         parent::__construct($name, $version);
 
         $this->silexApplication = $application;
-        $application->boot();
     }
 
     /**
@@ -41,5 +42,15 @@ class Application extends BaseApplication
     public function getSilexApplication()
     {
         return $this->silexApplication;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function run(InputInterface $input = null, OutputInterface $output = null)
+    {
+        $this->silexApplication->boot();
+
+        parent::run($input, $output);
     }
 }
