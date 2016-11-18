@@ -5,8 +5,10 @@ namespace Codito\Silex\Provider;
 use Codito\Silex\Console\Application as ConsoleApplication;
 use Codito\Silex\Console\Helper\DescriptorHelper;
 
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Silex\Api\BootableProviderInterface;
 
 /**
  * ConsoleServiceProvider
@@ -14,16 +16,16 @@ use Silex\ServiceProviderInterface;
  * @author Grzegorz Korba <grzegorz.korba@codito.net>
  * @copyright 2015 Codito.net
  */
-class ConsoleServiceProvider implements ServiceProviderInterface
+class ConsoleServiceProvider implements ServiceProviderInterface, BootableProviderInterface
 {
     /**
      * Registers service in Silex application
      * 
      * @param Application $app
      */
-    public function register(Application $app)
+    public function register(Container $app)
     {
-        $app['console'] = $app->share(function() use ($app) {
+        $app['console'] = function() use ($app) {
             $console = new ConsoleApplication(
                 $app,
                 $app['console.name'],
@@ -33,7 +35,7 @@ class ConsoleServiceProvider implements ServiceProviderInterface
             $console->getHelperSet()->set(new DescriptorHelper(), 'descriptor');
 
             return $console;
-        });
+        };
     }
 
     /**
