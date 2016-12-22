@@ -32,8 +32,7 @@ class RouterDebugCommand extends AbstractCommand
 
         if (
             !$app->offsetExists('routes') ||
-            !$app['routes'] instanceof RouteCollection ||
-            $app['routes']->count() === 0
+            !$app['routes'] instanceof RouteCollection
         ) {
             return false;
         }
@@ -77,6 +76,9 @@ EOF
     {
         /* @var $app SilexApplication */
         $app = $this->getSilexApplication();
+
+        // Add routes from $app['controllers'] to $['routes']
+        $app->flush();
 
         $name = $input->getArgument('name');
         /* @var $descriptor DescriptorHelper */
